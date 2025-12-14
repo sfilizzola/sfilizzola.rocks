@@ -1,12 +1,329 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>sfilizzola.rocks</title>
-  </head>
-  <body>
-    <h1>It works ✅</h1>
-    <p>This site is hosted on GitHub Pages.</p>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>sfilizzola.rocks</title>
+  <meta name="description" content="Sam Filizzola — personal + professional hub." />
+  <meta name="color-scheme" content="dark light" />
+  <style>
+    :root{
+      --bg: #0b0d12;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.09);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.65);
+      --border: rgba(255,255,255,.12);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 980px;
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#f6f7fb;
+        --card: rgba(0,0,0,.04);
+        --card2: rgba(0,0,0,.06);
+        --text: rgba(0,0,0,.88);
+        --muted: rgba(0,0,0,.62);
+        --border: rgba(0,0,0,.10);
+        --shadow: 0 10px 30px rgba(0,0,0,.10);
+      }
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(900px 500px at 15% 0%, rgba(120,88,255,.20), transparent 60%),
+        radial-gradient(900px 500px at 85% 0%, rgba(0,200,255,.14), transparent 60%),
+        var(--bg);
+      color: var(--text);
+      line-height:1.45;
+    }
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 44px;}
+    header{
+      display:flex; gap:14px; align-items:flex-start; justify-content:space-between; flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .who{
+      display:flex; gap:14px; align-items:center;
+    }
+    .avatar{
+      width:56px; height:56px; border-radius:16px;
+      background: linear-gradient(135deg, rgba(120,88,255,.55), rgba(0,200,255,.35));
+      box-shadow: var(--shadow);
+      border:1px solid var(--border);
+    }
+    h1{margin:0; font-size:22px; letter-spacing:.2px}
+    .subtitle{margin:3px 0 0; color:var(--muted); font-size:14px}
+    .actions{
+      display:flex; gap:10px; align-items:center;
+      padding:10px 12px;
+      border:1px solid var(--border);
+      background: var(--card);
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+    }
+    .pill{
+      appearance:none; border:1px solid transparent;
+      background:transparent; color:var(--muted);
+      padding:8px 12px; border-radius:999px;
+      cursor:pointer; font-weight:600;
+    }
+    .pill[aria-pressed="true"]{
+      background: var(--card2);
+      border-color: var(--border);
+      color: var(--text);
+    }
+
+    .grid{
+      margin-top:22px;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:12px;
+    }
+    .card{
+      grid-column: span 6;
+      padding:14px 14px;
+      border-radius: var(--radius);
+      background: var(--card);
+      border:1px solid var(--border);
+      box-shadow: var(--shadow);
+      text-decoration:none;
+      color:inherit;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      display:flex; gap:12px; align-items:flex-start;
+      min-height:76px;
+    }
+    .card:hover{ transform: translateY(-2px); background: var(--card2); border-color: rgba(255,255,255,.18); }
+    .icon{
+      width:36px; height:36px; border-radius:12px;
+      display:grid; place-items:center;
+      background: rgba(255,255,255,.08);
+      border:1px solid var(--border);
+      flex:0 0 auto;
+      font-size:18px;
+    }
+    .meta{min-width:0}
+    .title{font-weight:800; margin:0; font-size:15px}
+    .desc{margin:4px 0 0; color:var(--muted); font-size:13px}
+
+    .section{
+      margin-top:22px;
+      padding:14px;
+      border-radius: var(--radius);
+      background: rgba(0,0,0,.08);
+      border:1px dashed var(--border);
+    }
+    @media (prefers-color-scheme: light){
+      .section{ background: rgba(255,255,255,.55); }
+    }
+    .section h2{margin:0 0 10px; font-size:14px; letter-spacing:.3px; text-transform:uppercase; color:var(--muted)}
+    .section .grid{margin-top:0}
+
+    .wide{grid-column: span 12;}
+    .small{grid-column: span 4;}
+    @media (max-width: 860px){
+      .card{grid-column: span 12;}
+      .small{grid-column: span 12;}
+    }
+
+    footer{
+      margin-top:26px;
+      color: var(--muted);
+      font-size:12px;
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
+    .hidden{display:none !important;}
+    .kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size:11px;
+      padding:2px 6px;
+      border-radius:8px;
+      border:1px solid var(--border);
+      background: var(--card);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="who">
+        <div class="avatar" aria-hidden="true"></div>
+        <div>
+          <h1>Sam Filizzola</h1>
+          <p class="subtitle">Engineering Manager · Hamburg — a small hub for work & fun</p>
+        </div>
+      </div>
+
+      <div class="actions" role="group" aria-label="Mode toggle">
+        <button class="pill" id="btn-pro" aria-pressed="true">Professional</button>
+        <button class="pill" id="btn-fun" aria-pressed="false">Personal</button>
+      </div>
+    </header>
+
+    <!-- PROFESSIONAL -->
+    <div id="pro">
+      <div class="grid">
+        <a class="card" href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noreferrer">
+          <div class="icon">💼</div>
+          <div class="meta">
+            <p class="title">LinkedIn</p>
+            <p class="desc">Experience, roles, recommendations.</p>
+          </div>
+        </a>
+
+        <a class="card" href="https://github.com/YOUR_GITHUB" target="_blank" rel="noreferrer">
+          <div class="icon">🧑‍💻</div>
+          <div class="meta">
+            <p class="title">GitHub</p>
+            <p class="desc">Side projects, experiments, OSS.</p>
+          </div>
+        </a>
+
+        <a class="card" href="mailto:you@yourdomain.com">
+          <div class="icon">✉️</div>
+          <div class="meta">
+            <p class="title">Email</p>
+            <p class="desc">Say hi — best way to reach me.</p>
+          </div>
+        </a>
+
+        <a class="card" href="/resume/" >
+          <div class="icon">📄</div>
+          <div class="meta">
+            <p class="title">Resume</p>
+            <p class="desc">A clean PDF or HTML version (optional).</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="section">
+        <h2>Projects & Writing</h2>
+        <div class="grid">
+          <a class="card wide" href="https://YOUR_BLOG_URL" target="_blank" rel="noreferrer">
+            <div class="icon">✍️</div>
+            <div class="meta">
+              <p class="title">Blog / Notes</p>
+              <p class="desc">Short posts about engineering, leadership, and building things.</p>
+            </div>
+          </a>
+
+          <a class="card" href="https://YOUR_TALK_SLIDES" target="_blank" rel="noreferrer">
+            <div class="icon">🎤</div>
+            <div class="meta">
+              <p class="title">Talks</p>
+              <p class="desc">Slides, recordings, internal tech docs (public-safe).</p>
+            </div>
+          </a>
+
+          <a class="card" href="https://YOUR_PORTFOLIO" target="_blank" rel="noreferrer">
+            <div class="icon">🧰</div>
+            <div class="meta">
+              <p class="title">Portfolio</p>
+              <p class="desc">A few highlights, not everything.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PERSONAL -->
+    <div id="fun" class="hidden">
+      <div class="grid">
+        <a class="card" href="https://instagram.com/YOUR_HANDLE" target="_blank" rel="noreferrer">
+          <div class="icon">📸</div>
+          <div class="meta">
+            <p class="title">Instagram</p>
+            <p class="desc">Life, friends, travels, random stuff.</p>
+          </div>
+        </a>
+
+        <a class="card" href="https://open.spotify.com/user/YOUR_ID" target="_blank" rel="noreferrer">
+          <div class="icon">🎧</div>
+          <div class="meta">
+            <p class="title">Spotify</p>
+            <p class="desc">Playlists, setlists, obsession of the week.</p>
+          </div>
+        </a>
+
+        <a class="card" href="https://letterboxd.com/YOUR_HANDLE" target="_blank" rel="noreferrer">
+          <div class="icon">🎬</div>
+          <div class="meta">
+            <p class="title">Letterboxd</p>
+            <p class="desc">Movies I watched and rated.</p>
+          </div>
+        </a>
+
+        <a class="card" href="https://goodreads.com/user/show/YOUR_ID" target="_blank" rel="noreferrer">
+          <div class="icon">📚</div>
+          <div class="meta">
+            <p class="title">Goodreads</p>
+            <p class="desc">Books, highlights, “to-read” pile of shame.</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="section">
+        <h2>Home lab / Subdomains</h2>
+        <div class="grid">
+          <a class="card small" href="https://blockbuster.sfilizzola.rocks" target="_blank" rel="noreferrer">
+            <div class="icon">🗄️</div>
+            <div class="meta">
+              <p class="title">blockbuster</p>
+              <p class="desc">NAS / media hub</p>
+            </div>
+          </a>
+
+          <a class="card small" href="https://status.sfilizzola.rocks" target="_blank" rel="noreferrer">
+            <div class="icon">📡</div>
+            <div class="meta">
+              <p class="title">status</p>
+              <p class="desc">Uptime / dashboards</p>
+            </div>
+          </a>
+
+          <a class="card small" href="https://docs.sfilizzola.rocks" target="_blank" rel="noreferrer">
+            <div class="icon">🧭</div>
+            <div class="meta">
+              <p class="title">docs</p>
+              <p class="desc">Notes / how-tos</p>
+            </div>
+          </a>
+        </div>
+        <p class="desc" style="margin:10px 2px 0;">
+          Tip: keep adding subdomains here as you spin things up.
+        </p>
+      </div>
+    </div>
+
+    <footer>
+      <div>© <span id="year"></span> sfilizzola.rocks</div>
+      <div>Toggle mode: <span class="kbd">Professional</span> / <span class="kbd">Personal</span></div>
+    </footer>
+  </div>
+
+  <script>
+    const pro = document.getElementById("pro");
+    const fun = document.getElementById("fun");
+    const btnPro = document.getElementById("btn-pro");
+    const btnFun = document.getElementById("btn-fun");
+
+    const setMode = (mode) => {
+      const isPro = mode === "pro";
+      pro.classList.toggle("hidden", !isPro);
+      fun.classList.toggle("hidden", isPro);
+      btnPro.setAttribute("aria-pressed", String(isPro));
+      btnFun.setAttribute("aria-pressed", String(!isPro));
+      localStorage.setItem("mode", mode);
+    };
+
+    btnPro.addEventListener("click", () => setMode("pro"));
+    btnFun.addEventListener("click", () => setMode("fun"));
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+    setMode(localStorage.getItem("mode") || "pro");
+  </script>
+</body>
 </html>
