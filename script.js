@@ -18,3 +18,4 @@ btnFun.addEventListener("click", () => setMode("fun"));
 document.getElementById("year").textContent = new Date().getFullYear();
 setMode(localStorage.getItem("mode") || "pro");
 
+
